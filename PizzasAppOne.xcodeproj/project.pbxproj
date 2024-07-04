@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430F4A422C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */; };
 		43D540102C2FE9E000B51F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D5400F2C2FE9E000B51F53 /* AppDelegate.swift */; };
 		43D540122C2FE9E000B51F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540112C2FE9E000B51F53 /* SceneDelegate.swift */; };
 		43D540142C2FE9E000B51F53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540132C2FE9E000B51F53 /* ViewController.swift */; };
@@ -24,9 +25,11 @@
 		43D540372C2FFD0F00B51F53 /* Pizza.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540362C2FFD0F00B51F53 /* Pizza.swift */; };
 		43D5403A2C300D0B00B51F53 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540392C300D0B00B51F53 /* IngredientsListTableViewController.swift */; };
 		43D5403C2C300D2F00B51F53 /* IngredientsListTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */; };
+		43DC88A92C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsOfPizzasTableViewModel.swift; sourceTree = "<group>"; };
 		43D5400C2C2FE9E000B51F53 /* PizzasAppOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzasAppOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D5400F2C2FE9E000B51F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43D540112C2FE9E000B51F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		43D540362C2FFD0F00B51F53 /* Pizza.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizza.swift; sourceTree = "<group>"; };
 		43D540392C300D0B00B51F53 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
 		43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewModel.swift; sourceTree = "<group>"; };
+		43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsOfPizzasTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430F4A432C36A08B00E565CA /* PizzeriaLocation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PizzeriaLocation;
+			sourceTree = "<group>";
+		};
 		43D540032C2FE9E000B51F53 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +89,8 @@
 		43D5400E2C2FE9E000B51F53 /* PizzasAppOne */ = {
 			isa = PBXGroup;
 			children = (
+				430F4A432C36A08B00E565CA /* PizzeriaLocation */,
+				43DC88A72C36599400C37445 /* IngredientsOfPizzaListTable */,
 				43D540382C300CA500B51F53 /* IngredientsListTable */,
 				43D5402F2C2FF48F00B51F53 /* FavoritePizzasListTable */,
 				43D5402A2C2FF17200B51F53 /* PizzasListTable */,
@@ -130,6 +143,15 @@
 				43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */,
 			);
 			path = IngredientsListTable;
+			sourceTree = "<group>";
+		};
+		43DC88A72C36599400C37445 /* IngredientsOfPizzaListTable */ = {
+			isa = PBXGroup;
+			children = (
+				43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */,
+				430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */,
+			);
+			path = IngredientsOfPizzaListTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,11 +227,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				43D540142C2FE9E000B51F53 /* ViewController.swift in Sources */,
+				430F4A422C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift in Sources */,
 				43D5402C2C2FF28B00B51F53 /* PizzasListTableViewController.swift in Sources */,
 				43D540332C2FF5C100B51F53 /* FavoritePizzasListTableViewModel.swift in Sources */,
 				43D5402E2C2FF2F300B51F53 /* PizzasListTableViewModel.swift in Sources */,
 				43D540272C2FECB000B51F53 /* PizzeriasListTableViewController.swift in Sources */,
 				43D540312C2FF52B00B51F53 /* FavoritePizzasListTableViewController.swift in Sources */,
+				43DC88A92C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift in Sources */,
 				43D5403A2C300D0B00B51F53 /* IngredientsListTableViewController.swift in Sources */,
 				43D540292C2FED1B00B51F53 /* PizzeriasListTableViewModel.swift in Sources */,
 				43D540102C2FE9E000B51F53 /* AppDelegate.swift in Sources */,

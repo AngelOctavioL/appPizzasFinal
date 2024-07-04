@@ -1,22 +1,38 @@
 //
-//  PizzasListTableViewController.swift
+//  IngredientsOfPizzasTableViewController.swift
 //  PizzasAppOne
 //
-//  Created by Angel Octavio Lopez Cruz on 29/06/24.
+//  Created by Angel Octavio Lopez Cruz on 03/07/24.
 //
 
 import UIKit
 
-class PizzasListTableViewController: UITableViewController {
-    let viewModel = PizzasListTableViewModel()
+class IngredientsOfPizzasTableViewController: UITableViewController {
+    private let viewModel: IngredientsOfPizzasTableViewModel
+    
+    init(pizza: Pizza) {
+        viewModel = IngredientsOfPizzasTableViewModel(with: pizza)
+        super.init(nibName: nil, bundle: nil)
+        
+        //viewModel.delegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //viewModel.delegate = self
-        title = viewModel.title
-        navigationController?.navigationBar.prefersLargeTitles = true
         
+        title = viewModel.pizzaName
+        navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -28,27 +44,18 @@ class PizzasListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return viewModel.pizzasCount
+        return viewModel.ingredientsOfPizzasCount
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
         
-        let pizza = viewModel.pizza(at: indexPath)
+        let ingredients = viewModel.ingredient(at: indexPath)
         var cellConfigurator = cell.defaultContentConfiguration()
-        cellConfigurator.text = pizza.name
-        
+        cellConfigurator.text = ingredients
         cell.contentConfiguration = cellConfigurator
-
+        
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let selectedPizza = viewModel.pizza(at: indexPath)
-        //print(selectedPizza)
-        let ingredientsOfPizza = IngredientsOfPizzasTableViewController(pizza: selectedPizza)
-        navigationController?.pushViewController(ingredientsOfPizza, animated: true)
     }
 
     /*
@@ -97,9 +104,3 @@ class PizzasListTableViewController: UITableViewController {
     */
 
 }
-
-//extension PizzasListTableViewController: PizzasListTableViewModelDelegate {
-//    func shouldReloadInformation() {
-//        tableView.reloadData()
-//    }
-//}
