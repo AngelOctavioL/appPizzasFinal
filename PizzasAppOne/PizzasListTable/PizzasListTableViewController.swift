@@ -46,8 +46,8 @@ class PizzasListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedPizza = viewModel.pizza(at: indexPath)
-        //print(selectedPizza)
         let ingredientsOfPizza = IngredientsOfPizzasTableViewController(pizza: selectedPizza)
+        
         navigationController?.pushViewController(ingredientsOfPizza, animated: true)
     }
 

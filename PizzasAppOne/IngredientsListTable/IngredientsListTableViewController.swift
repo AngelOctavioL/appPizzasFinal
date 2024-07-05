@@ -9,6 +9,7 @@ import UIKit
 
 class IngredientsListTableViewController: UITableViewController {
     let viewModel = IngredientsListTableViewModel()
+    var selectedIngredients = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,28 @@ class IngredientsListTableViewController: UITableViewController {
         cellConfigurator.text = ingredients
         cell.contentConfiguration = cellConfigurator
         
+        // Cambia el color de fondo si el ingrediente está seleccionado
+        if selectedIngredients.contains(ingredients) {
+            cell.backgroundColor = UIColor.systemGreen
+        } else {
+            cell.backgroundColor = UIColor.clear
+        }
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+            
+        let ingredient = viewModel.ingredients(at: indexPath)
+            
+        if let index = selectedIngredients.firstIndex(of: ingredient) {
+            selectedIngredients.remove(at: index)
+        } else {
+            selectedIngredients.append(ingredient)
+        }
+        print(selectedIngredients)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
     /*
@@ -75,15 +97,4 @@ class IngredientsListTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
