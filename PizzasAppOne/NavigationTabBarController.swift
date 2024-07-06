@@ -30,8 +30,7 @@ class NavigationTabBarController: UITabBarController {
         let pizzasNavigationController = UINavigationController(rootViewController: pizzasListTableViewController)
         
         // Vista 2 - Pizzas favoritas
-        // Sustituir esta vista por la de favoritos
-        let favoritePizzasTableViewController = IngredientsListTableViewController(style: .insetGrouped)
+        let favoritePizzasTableViewController = FavoritePizzasViewController()
         favoritePizzasTableViewController.tabBarItem.title = "Favoritos"
         favoritePizzasTableViewController.tabBarItem.image = UIImage(systemName: "star")
         let favoritePizzasNavigationController = UINavigationController(rootViewController: favoritePizzasTableViewController)
