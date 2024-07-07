@@ -7,31 +7,126 @@
 
 import UIKit
 
-class IngredientsListTableViewController: UITableViewController {
+class IngredientsListTableViewController: UIViewController {
     let viewModel = IngredientsListTableViewModel()
     var selectedIngredients = [String]()
-
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
+    }()
+    
+    private lazy var doneButton: UIButton = {
+        var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.title = "Done"
+        let button = UIButton(configuration: buttonConfiguration)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
+        setupView()
     }
+    
+    private func setupView() {
+        view.backgroundColor = .systemBackground
+        view.addSubview(tableView)
+        view.addSubview(doneButton)
+            
+        NSLayoutConstraint.activate([
+            // Configuración de la tabla para que ocupe la mayor parte de la vista
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: doneButton.topAnchor, constant: -16),
+                
+            // Configuración del botón "Done"
+            doneButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            doneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            doneButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            doneButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+        
+    @objc private func doneButtonTapped() {
+        // Acciones a realizar cuando se presiona el botón "Done"
+        let alertController = UIAlertController(title: "Name Your Pizza", message: "Enter a name for your pizza", preferredStyle: .alert)
+                
+        alertController.addTextField { textField in textField.placeholder = "Pizza Name" }
+                
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+            if let pizzaName = alertController.textFields?.first?.text, !pizzaName.isEmpty {
+                // Aquí puedes manejar el nombre de la pizza y los ingredientes seleccionados
+                print("Pizza name: \(pizzaName)")
+                print("Selected ingredients: \(self.selectedIngredients)")
+                
+                guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                                        in: .userDomainMask).first
+                else { return }
+                
+                let filename = "favoritesPizzas.json"
+                let fileURL = documentsDirectory.appending(component: filename)
+                var favoritePizzas: [Pizza] = []
+                
+                // Leer pizzas existentes
+                if let data = try? Data(contentsOf: fileURL) {
+                    favoritePizzas = (try? JSONDecoder().decode([Pizza].self, from: data)) ?? []
+                }
+                                
+                // Agregar nueva pizza
+                let newPizza = Pizza(name: pizzaName, ingredients: self.selectedIngredients)
+                favoritePizzas.append(newPizza)
+                                
+                // Guardar pizzas actualizadas
+                do {
+                    let favoritePizzaData = try JSONEncoder().encode(favoritePizzas)
+                    try favoritePizzaData.write(to: fileURL)
+                } catch {
+                    assertionFailure("Failed storing favorite pizza")
+                }
+                                
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                // Muestra un mensaje de error si el campo de texto está vacío
+                let errorAlert = UIAlertController(title: "Error", message: "The pizza name cannot be empty", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+        }
+                
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+                
+        present(alertController, animated: true, completion: nil)
+    }
+}
 
+extension IngredientsListTableViewController: UITableViewDataSource, UITableViewDelegate {
+    
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return viewModel.ingredientsCount
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
 
         let ingredients = viewModel.ingredients(at: indexPath)
@@ -49,7 +144,7 @@ class IngredientsListTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
             
         let ingredient = viewModel.ingredients(at: indexPath)
@@ -62,10 +157,10 @@ class IngredientsListTableViewController: UITableViewController {
         print(selectedIngredients)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -73,26 +168,26 @@ class IngredientsListTableViewController: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
     /*
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
     */
 
     /*
     // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }

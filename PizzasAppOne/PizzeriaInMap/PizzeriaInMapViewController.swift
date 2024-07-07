@@ -23,7 +23,7 @@ class PizzeriaInMapViewController: UIViewController {
     
     //present(PizzeriaInMapViewController(pizzeriaInMap: viewModel.pizzeriaLocation), animated: true)
     init(pizzeriaInMap: Pizzeria.Coordinates?) {
-        print(pizzeriaInMap)
+          print(pizzeriaInMap)
 //        if let location = pokemonLocation {
 //            let coordinate = CLLocationCoordinate2D(latitude: location.latitude,
 //                                                    longitude: location.longitude)

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Lottie
 
 class FavoritePizzasViewController: UIViewController {
+    private let viewModel = FavoritePizzasViewModel()
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,8 +22,8 @@ class FavoritePizzasViewController: UIViewController {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.backgroundColor = .systemBackground
+
         return view
     }()
     
@@ -30,7 +33,6 @@ class FavoritePizzasViewController: UIViewController {
         label.text = "My Pizzas"
         label.font = .preferredFont(forTextStyle: .largeTitle)
         label.adjustsFontForContentSizeCategory = true
-        
         label.accessibilityLabel = nil
         
         return label
@@ -46,18 +48,28 @@ class FavoritePizzasViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+
         return tableView
     }()
     
-    private let pizzas = ["Pizza Margherita", "Pepperoni Pizza", "Hawaiian Pizza"]
+    private lazy var animationView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "animationCooking")
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+
+        return animationView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        loadPizzas()
     }
     
     private func setupView() {
@@ -85,7 +97,8 @@ class FavoritePizzasViewController: UIViewController {
         contentView.addSubview(titleView)
         contentView.addSubview(createNewPizzaButton)
         contentView.addSubview(tableView)
-        
+        contentView.addSubview(animationView)
+
         NSLayoutConstraint.activate([
             titleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             titleView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -94,17 +107,41 @@ class FavoritePizzasViewController: UIViewController {
             createNewPizzaButton.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 16),
             createNewPizzaButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             createNewPizzaButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-                    
+            
             tableView.topAnchor.constraint(equalTo: createNewPizzaButton.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                        
+            animationView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            animationView.heightAnchor.constraint(equalToConstant: 350),
+            animationView.widthAnchor.constraint(equalToConstant: 350)
         ])
         
         createNewPizzaButton.translatesAutoresizingMaskIntoConstraints = false
         createNewPizzaButton.addTarget(self, action: #selector(createNewPizza), for: .touchUpInside)
     }
     
+    private func loadPizzas() {
+        viewModel.loadFavoritePizzaInfo { [weak self] pizzas in
+            guard let self = self else { return }
+            self.viewModel.updatePizzaFavoriteList(with: pizzas)
+            self.updateUI()
+        }
+    }
+    
+    private func updateUI() {
+        if viewModel.pizzasFavoriteCount > 0 {
+            tableView.isHidden = false
+            animationView.isHidden = true
+            tableView.reloadData()
+        } else {
+            tableView.isHidden = true
+            animationView.isHidden = false
+        }
+    }
+
     @objc
     func createNewPizza() {
         let createNewPizzaView =  IngredientsListTableViewController()
@@ -120,12 +157,14 @@ extension FavoritePizzasViewController: UITableViewDataSource, UITableViewDelega
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pizzas.count
+        return viewModel.pizzasFavoriteCount
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = pizzas[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
+        let pizza = viewModel.pizzaFavorite(at: indexPath)
+        cell.textLabel?.text = pizza.name
+        
         return cell
     }
         

@@ -6,15 +6,24 @@
 //
 
 import UIKit
+import Lottie
 
 class IngredientsOfPizzasTableViewController: UITableViewController {
     private let viewModel: IngredientsOfPizzasTableViewModel
     
+    private lazy var animationView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "animationPizza")
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        
+        return animationView
+    }()
+    
     init(pizza: Pizza) {
         viewModel = IngredientsOfPizzasTableViewModel(with: pizza)
         super.init(nibName: nil, bundle: nil)
-        
-        //viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -27,12 +36,15 @@ class IngredientsOfPizzasTableViewController: UITableViewController {
         title = viewModel.pizzaName
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Añadir la vista de la animación
+        view.addSubview(animationView)
+        NSLayoutConstraint.activate([
+            animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: 300),
+            animationView.heightAnchor.constraint(equalToConstant: 300),
+        ])
     }
 
     // MARK: - Table view data source
@@ -92,15 +104,4 @@ class IngredientsOfPizzasTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

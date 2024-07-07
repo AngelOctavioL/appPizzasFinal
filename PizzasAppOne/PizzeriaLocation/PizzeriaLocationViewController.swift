@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class PizzeriaLocationViewController: UIViewController {
     private let viewModel: PizzeriaLocationViewModel
@@ -22,8 +23,8 @@ class PizzeriaLocationViewController: UIViewController {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.backgroundColor = .systemBackground
+
         return view
     }()
     
@@ -40,11 +41,34 @@ class PizzeriaLocationViewController: UIViewController {
         return label
     }()
     
+    // Label para renderizar la direccion de la pizaria
+    private lazy var pizzariaAddres: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = viewModel.pizzeriaAddres
+        label.font = .preferredFont(forTextStyle: .body)
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    // Boton para disparar el mapa
     private lazy var pizzeriaLocationButton: UIButton = {
         var buttonConfiguration = UIButton.Configuration.filled()
         buttonConfiguration.title = "Pizzeria Location"
         
         return UIButton(configuration: buttonConfiguration)
+    }()
+    
+    private lazy var animationView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "animationDelivery")
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+
+        return animationView
     }()
     
     init(pizzeria: Pizzeria) {
@@ -70,7 +94,7 @@ class PizzeriaLocationViewController: UIViewController {
         let contentViewHeightAnchor = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         contentViewHeightAnchor.isActive = true
         contentViewHeightAnchor.priority = .required - 1
-        
+        pizzeriaLocationButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -85,21 +109,30 @@ class PizzeriaLocationViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         ])
         
-        let pizzeriaInfoStack = UIStackView()
-        pizzeriaInfoStack.translatesAutoresizingMaskIntoConstraints = false
-        pizzeriaInfoStack.axis = .vertical
-        pizzeriaInfoStack.distribution = .fillProportionally
-        
-        pizzeriaInfoStack.addArrangedSubview(pizzeriaName)
-        pizzeriaInfoStack.addArrangedSubview(pizzeriaLocationButton)
-        
-        contentView.addSubview(pizzeriaInfoStack)
+        contentView.addSubview(pizzeriaName)
+        contentView.addSubview(pizzariaAddres)
+        contentView.addSubview(animationView)
+        contentView.addSubview(pizzeriaLocationButton)
         
         NSLayoutConstraint.activate([
-            pizzeriaInfoStack.topAnchor.constraint(equalTo: contentView.topAnchor),
-            pizzeriaInfoStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            pizzeriaInfoStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            pizzeriaInfoStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
+            pizzeriaName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            pizzeriaName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            pizzeriaName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            pizzariaAddres.topAnchor.constraint(equalTo: pizzeriaName.bottomAnchor, constant: 16),
+            pizzariaAddres.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            pizzariaAddres.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            animationView.topAnchor.constraint(equalTo: pizzariaAddres.bottomAnchor, constant: 8),
+            animationView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            // MARK: Preguntar por que la linea de abajo si se descomenta "jala" todos los elementos hacia el centro
+            //animationView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            animationView.heightAnchor.constraint(equalToConstant: 350),
+            animationView.widthAnchor.constraint(equalToConstant: 350),
+            
+            pizzeriaLocationButton.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 16),
+            pizzeriaLocationButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            pizzeriaLocationButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])
         
         pizzeriaLocationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
