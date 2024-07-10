@@ -26,7 +26,7 @@ class NavigationTabBarController: UITabBarController {
         // Vista 1 - Pizzas
         let pizzasListTableViewController = PizzasListTableViewController(style: .insetGrouped)
         pizzasListTableViewController.tabBarItem.title = "Pizzas"
-        pizzasListTableViewController.tabBarItem.image = UIImage(systemName: "pencil")
+        pizzasListTableViewController.tabBarItem.image = UIImage(systemName: "menucard")
         let pizzasNavigationController = UINavigationController(rootViewController: pizzasListTableViewController)
         
         // Vista 2 - Pizzas favoritas
@@ -38,7 +38,7 @@ class NavigationTabBarController: UITabBarController {
         // Vista 3 - Pizzerias
         let pizzeriasListTableViewController = PizzeriasListTableViewController(style: .insetGrouped)
         pizzeriasListTableViewController.tabBarItem.title = "Pizzerias"
-        pizzeriasListTableViewController.tabBarItem.image = UIImage(systemName: "lizard")
+        pizzeriasListTableViewController.tabBarItem.image = UIImage(systemName: "storefront")
         let pizzeriasNavigationController = UINavigationController(rootViewController: pizzeriasListTableViewController)
         
         viewControllers = [

@@ -72,6 +72,11 @@ class FavoritePizzasViewController: UIViewController {
         loadPizzas()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadPizzas()
+    }
+
     private func setupView() {
         view.backgroundColor = .systemBackground
         view.addSubview(scrollView)
@@ -172,6 +177,9 @@ extension FavoritePizzasViewController: UITableViewDataSource, UITableViewDelega
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // Handle the selection of a pizza
+        let selectedFavoritePizza = viewModel.pizzaFavorite(at: indexPath)
+        let ingredientsOfFavoritePizza = IngredientsOfPizzasTableViewController(pizza: selectedFavoritePizza)
+        
+        navigationController?.pushViewController(ingredientsOfFavoritePizza, animated: true)
     }
 }

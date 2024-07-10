@@ -7,10 +7,6 @@
 
 import Foundation
 
-//protocol PizzasListTableViewModelDelegate: AnyObject {
-//    func shouldReloadInformation()
-//}
-
 class PizzasListTableViewModel {
     private let pizzaDataFileName = "pizza-info"
     private let pizzaDataFileExtension = "json"
