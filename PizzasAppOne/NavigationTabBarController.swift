@@ -20,6 +20,7 @@ class NavigationTabBarController: UITabBarController {
         super.viewDidLoad()
         
         setupViewControllers()
+        //setupTabBarAppearance()
     }
     
     private func setupViewControllers() {
@@ -47,5 +48,9 @@ class NavigationTabBarController: UITabBarController {
             pizzeriasNavigationController,
         ]
     }
-
+    
+    private func setupTabBarAppearance() {
+        tabBar.tintColor = UIColor(hex: "#7A4900") // Cambiar el color de los íconos seleccionados
+        tabBar.unselectedItemTintColor = UIColor(hex: "#E08700") // Cambiar el color de los íconos no seleccionados
+    }
 }

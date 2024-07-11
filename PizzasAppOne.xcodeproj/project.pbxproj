@@ -31,6 +31,7 @@
 		43D540372C2FFD0F00B51F53 /* Pizza.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540362C2FFD0F00B51F53 /* Pizza.swift */; };
 		43D5403A2C300D0B00B51F53 /* IngredientsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540392C300D0B00B51F53 /* IngredientsListTableViewController.swift */; };
 		43D5403C2C300D2F00B51F53 /* IngredientsListTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */; };
+		43DAD7DD2C3FC4F400213B98 /* HexadecimalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAD7DC2C3FC4F400213B98 /* HexadecimalColor.swift */; };
 		43DC88A92C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */; };
 		43DE841C2C3B3A25004A78D7 /* animationPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = 43DE841B2C3B3A24004A78D7 /* animationPizza.json */; };
 		43DE841E2C3B3A3A004A78D7 /* animationDelivery.json in Resources */ = {isa = PBXBuildFile; fileRef = 43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */; };
@@ -62,6 +63,7 @@
 		43D540362C2FFD0F00B51F53 /* Pizza.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizza.swift; sourceTree = "<group>"; };
 		43D540392C300D0B00B51F53 /* IngredientsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewController.swift; sourceTree = "<group>"; };
 		43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewModel.swift; sourceTree = "<group>"; };
+		43DAD7DC2C3FC4F400213B98 /* HexadecimalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexadecimalColor.swift; sourceTree = "<group>"; };
 		43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsOfPizzasTableViewController.swift; sourceTree = "<group>"; };
 		43DE841B2C3B3A24004A78D7 /* animationPizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animationPizza.json; path = ../../../Downloads/animationPizza.json; sourceTree = "<group>"; };
 		43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animationDelivery.json; path = ../../../Downloads/animationDelivery.json; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				43D5401D2C2FE9E100B51F53 /* Info.plist */,
 				43D540232C2FEB6B00B51F53 /* NavigationTabBarController.swift */,
 				43D540342C2FF89A00B51F53 /* pizza-info.json */,
+				43DAD7DC2C3FC4F400213B98 /* HexadecimalColor.swift */,
 				43D540362C2FFD0F00B51F53 /* Pizza.swift */,
 				43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */,
 				43DE841B2C3B3A24004A78D7 /* animationPizza.json */,
@@ -275,6 +278,7 @@
 				43906B1A2C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift in Sources */,
 				43D540272C2FECB000B51F53 /* PizzeriasListTableViewController.swift in Sources */,
 				43906B1F2C37DA1500D9D5A0 /* PizzeriaInMapViewController.swift in Sources */,
+				43DAD7DD2C3FC4F400213B98 /* HexadecimalColor.swift in Sources */,
 				43D540312C2FF52B00B51F53 /* FavoritePizzasViewController.swift in Sources */,
 				43DC88A92C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift in Sources */,
 				43906B212C37DD5800D9D5A0 /* PizzeriaInMapViewModel.swift in Sources */,

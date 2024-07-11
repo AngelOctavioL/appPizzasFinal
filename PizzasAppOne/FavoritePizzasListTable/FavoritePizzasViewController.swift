@@ -14,6 +14,7 @@ class FavoritePizzasViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        //scrollView.backgroundColor = UIColor(hex: "#FFDAA7")
         
         return scrollView
     }()
@@ -23,6 +24,7 @@ class FavoritePizzasViewController: UIViewController {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBackground
+        //view.backgroundColor = UIColor(hex: "#FFDAA7")
 
         return view
     }()
@@ -47,6 +49,7 @@ class FavoritePizzasViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        //tableView.backgroundColor = UIColor(hex: "#FFDAA7")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
         tableView.dataSource = self
@@ -79,6 +82,7 @@ class FavoritePizzasViewController: UIViewController {
 
     private func setupView() {
         view.backgroundColor = .systemBackground
+        //view.backgroundColor = UIColor(hex: "#FFDAA7")
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         

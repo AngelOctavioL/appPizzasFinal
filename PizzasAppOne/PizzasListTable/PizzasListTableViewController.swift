@@ -12,9 +12,10 @@ class PizzasListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //viewModel.delegate = self
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
+        // Cambiar el color de fondo de la tableView utilizando un código hexadecimal con alpha
+        //tableView.backgroundColor = UIColor(hex: "#FFDAA7")
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
     }
@@ -33,12 +34,12 @@ class PizzasListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
-        
         let pizza = viewModel.pizza(at: indexPath)
         var cellConfigurator = cell.defaultContentConfiguration()
         cellConfigurator.text = pizza.name
-        
         cell.contentConfiguration = cellConfigurator
+        // Cambiar el color de fondo de la celda utilizando un código hexadecimal con alpha
+        //cell.backgroundColor = UIColor(hex: "#FFF7EB")
 
         return cell
     }

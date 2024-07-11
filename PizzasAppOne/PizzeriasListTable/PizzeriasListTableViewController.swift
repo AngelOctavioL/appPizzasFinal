@@ -14,6 +14,7 @@ class PizzeriasListTableViewController: UITableViewController {
         super.viewDidLoad()
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
+        //tableView.backgroundColor = UIColor(hex: "#FFDAA7")
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
     }
@@ -37,8 +38,8 @@ class PizzeriasListTableViewController: UITableViewController {
         var cellConfigurator = cell.defaultContentConfiguration()
         cellConfigurator.text = pizzeria.name
         cellConfigurator.secondaryText = pizzeria.address
-        
         cell.contentConfiguration = cellConfigurator
+        //cell.backgroundColor = UIColor(hex: "#FFF7EB")
 
         return cell
     }
