@@ -77,6 +77,8 @@ class FavoritePizzasViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // MARK: - al descopmentar la linea de abajo se hace la validacion de autenticacion por FaceID
+        //navigationController?.present(AuthenticationViewController(), animated: animated)
         loadPizzas()
     }
 

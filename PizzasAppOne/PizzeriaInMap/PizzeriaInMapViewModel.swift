@@ -39,12 +39,7 @@ class PizzeriaInMapViewModel: NSObject {
     }
     
     func shouldShowDirectionsToPizzeria() {
-        guard let userLocation, let pizzeriaInMap = pizzeriaInMap else {
-            // MARK: el userLocation llega en nil
-            //print(userLocation)
-            print("User location or pizzeria location is missing.") // Debugging message
-            return
-        }
+        guard let userLocation, let pizzeriaInMap = pizzeriaInMap else { return }
         
         delegate?.showRouteBetween(userLocation: userLocation, pizzeriaInMap: pizzeriaInMap)
     }

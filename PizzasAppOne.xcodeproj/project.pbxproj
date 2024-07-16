@@ -14,6 +14,7 @@
 		43906B1C2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43906B1B2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift */; };
 		43906B1F2C37DA1500D9D5A0 /* PizzeriaInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43906B1E2C37DA1500D9D5A0 /* PizzeriaInMapViewController.swift */; };
 		43906B212C37DD5800D9D5A0 /* PizzeriaInMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43906B202C37DD5800D9D5A0 /* PizzeriaInMapViewModel.swift */; };
+		439388C42C45EA50004D855A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439388C32C45EA50004D855A /* AuthenticationViewController.swift */; };
 		43D540102C2FE9E000B51F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D5400F2C2FE9E000B51F53 /* AppDelegate.swift */; };
 		43D540122C2FE9E000B51F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540112C2FE9E000B51F53 /* SceneDelegate.swift */; };
 		43D540142C2FE9E000B51F53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D540132C2FE9E000B51F53 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		43906B1B2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaLocationViewModel.swift; sourceTree = "<group>"; };
 		43906B1E2C37DA1500D9D5A0 /* PizzeriaInMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaInMapViewController.swift; sourceTree = "<group>"; };
 		43906B202C37DD5800D9D5A0 /* PizzeriaInMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaInMapViewModel.swift; sourceTree = "<group>"; };
+		439388C32C45EA50004D855A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		43D5400C2C2FE9E000B51F53 /* PizzasAppOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzasAppOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D5400F2C2FE9E000B51F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43D540112C2FE9E000B51F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */,
 				43DE841B2C3B3A24004A78D7 /* animationPizza.json */,
 				435268CF2C3A858E0090EADE /* animationCooking.json */,
+				439388C32C45EA50004D855A /* AuthenticationViewController.swift */,
 			);
 			path = PizzasAppOne;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				43D540272C2FECB000B51F53 /* PizzeriasListTableViewController.swift in Sources */,
 				43906B1F2C37DA1500D9D5A0 /* PizzeriaInMapViewController.swift in Sources */,
 				43DAD7DD2C3FC4F400213B98 /* HexadecimalColor.swift in Sources */,
+				439388C42C45EA50004D855A /* AuthenticationViewController.swift in Sources */,
 				43D540312C2FF52B00B51F53 /* FavoritePizzasViewController.swift in Sources */,
 				43DC88A92C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift in Sources */,
 				43906B212C37DD5800D9D5A0 /* PizzeriaInMapViewModel.swift in Sources */,

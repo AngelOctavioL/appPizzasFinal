@@ -153,8 +153,7 @@ extension PizzeriaInMapViewController: PizzeriaLocationViewModelDelegate {
         
         directionsRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation))
         directionsRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: pizzeriaInMap))
-        
-        directionsRequest.transportType = .walking
+        directionsRequest.transportType = .automobile
         
         let directions = MKDirections(request: directionsRequest)
         

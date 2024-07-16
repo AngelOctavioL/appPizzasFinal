@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationUsageDescription</key>
-	<string>To find the route to the selected pizza place.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>We need to ensure that only you can see the favorite list</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>we use your location to display the pizza place nearby</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
