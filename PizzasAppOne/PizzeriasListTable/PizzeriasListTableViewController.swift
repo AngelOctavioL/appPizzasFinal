@@ -14,7 +14,10 @@ class PizzeriasListTableViewController: UITableViewController {
         super.viewDidLoad()
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryTextColor]
+        navigationController?.navigationBar.tintColor = UIColor.red
         //tableView.backgroundColor = UIColor(hex: "#FFDAA7")
+        tableView.backgroundColor = UIColor.pizzaCrust // o UIColor.primaryColor
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
     }
@@ -37,9 +40,14 @@ class PizzeriasListTableViewController: UITableViewController {
         let pizzeria = viewModel.pizzeria(at: indexPath)
         var cellConfigurator = cell.defaultContentConfiguration()
         cellConfigurator.text = pizzeria.name
+        // Para cambiar el color del texto principal
+        cellConfigurator.textProperties.color = UIColor.olives
         cellConfigurator.secondaryText = pizzeria.address
+        // Para cambiar el color del texto secundario
+        cellConfigurator.secondaryTextProperties.color = UIColor.primaryTextColor
         cell.contentConfiguration = cellConfigurator
         //cell.backgroundColor = UIColor(hex: "#FFF7EB")
+        cell.backgroundColor = UIColor.pizzaCrust // o UIColor.softBackgroundColor
 
         return cell
     }
@@ -47,7 +55,6 @@ class PizzeriasListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedPizzeria =  viewModel.pizzeria(at: indexPath)
-        print(selectedPizzeria)
         let pizzeriaStore =  PizzeriaLocationViewController(pizzeria: selectedPizzeria)
 
         navigationController?.pushViewController(pizzeriaStore, animated: true)

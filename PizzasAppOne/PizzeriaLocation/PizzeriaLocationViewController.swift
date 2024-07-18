@@ -23,8 +23,9 @@ class PizzeriaLocationViewController: UIViewController {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBackground
-
+        //view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.pizzaCrust
+        
         return view
     }()
     
@@ -33,7 +34,9 @@ class PizzeriaLocationViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = viewModel.pizzeriaName
+        label.textColor = UIColor.primaryTextColor
         label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.font = .boldSystemFont(ofSize: 32)
         label.adjustsFontForContentSizeCategory = true
         
         label.accessibilityLabel = nil
@@ -46,6 +49,7 @@ class PizzeriaLocationViewController: UIViewController {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = viewModel.pizzeriaAddres
+        label.textColor = UIColor.secondaryTextColor
         label.font = .preferredFont(forTextStyle: .body)
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
@@ -56,6 +60,7 @@ class PizzeriaLocationViewController: UIViewController {
     // Boton para disparar el mapa
     private lazy var pizzeriaLocationButton: UIButton = {
         var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.baseBackgroundColor = UIColor.highlightColor
         buttonConfiguration.title = "Pizzeria Location"
         
         return UIButton(configuration: buttonConfiguration)
@@ -87,7 +92,8 @@ class PizzeriaLocationViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        //view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.pizzaCrust
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         

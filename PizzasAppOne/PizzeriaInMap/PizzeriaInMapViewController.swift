@@ -24,7 +24,7 @@ class PizzeriaInMapViewController: UIViewController {
     private lazy var closeMapButton: UIButton = {
         let button = UIButton()
         button.setTitle("Close", for: .normal)
-        button.backgroundColor = .systemPurple
+        button.backgroundColor = UIColor.highlightColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(closeMapButtonTapped), for: .touchUpInside)
         // Redondear los bordes del botón
@@ -39,6 +39,8 @@ class PizzeriaInMapViewController: UIViewController {
     private lazy var showPizzeriaButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Show Pizza place"
+        configuration.baseForegroundColor = UIColor.tomatoSauce
+        configuration.baseBackgroundColor = UIColor.mozzarellaCheese
         let button = UIButton(configuration: configuration)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(showPizzeriaButtonTapped), for: .touchUpInside)
@@ -49,6 +51,8 @@ class PizzeriaInMapViewController: UIViewController {
     private lazy var showDirectionsButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Show directions"
+        configuration.baseForegroundColor = UIColor.tomatoSauce
+        configuration.baseBackgroundColor = UIColor.mozzarellaCheese
         let button = UIButton(configuration: configuration)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(showDirectionsToPizzeria), for: .touchUpInside)
@@ -89,7 +93,7 @@ class PizzeriaInMapViewController: UIViewController {
         let pizzeriaInteractionStackView = UIStackView()
         pizzeriaInteractionStackView.translatesAutoresizingMaskIntoConstraints = false
         pizzeriaInteractionStackView.axis = .horizontal
-        pizzeriaInteractionStackView.distribution = .fillProportionally
+        pizzeriaInteractionStackView.distribution = .equalSpacing
         
         pizzeriaInteractionStackView.addArrangedSubview(showPizzeriaButton)
         pizzeriaInteractionStackView.addArrangedSubview(showDirectionsButton)
@@ -106,7 +110,9 @@ class PizzeriaInMapViewController: UIViewController {
             closeMapButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
             pizzeriaInteractionStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            pizzeriaInteractionStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            pizzeriaInteractionStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pizzeriaInteractionStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            pizzeriaInteractionStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
     }
     

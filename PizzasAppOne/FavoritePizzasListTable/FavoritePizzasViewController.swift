@@ -23,7 +23,8 @@ class FavoritePizzasViewController: UIViewController {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBackground
+        //view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.pizzaCrust
         //view.backgroundColor = UIColor(hex: "#FFDAA7")
 
         return view
@@ -33,7 +34,9 @@ class FavoritePizzasViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "My Pizzas"
+        label.textColor = UIColor.primaryTextColor
         label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.font = .boldSystemFont(ofSize: 32)
         label.adjustsFontForContentSizeCategory = true
         label.accessibilityLabel = nil
         
@@ -42,6 +45,7 @@ class FavoritePizzasViewController: UIViewController {
     
     private lazy var createNewPizzaButton: UIButton = {
         var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.baseBackgroundColor = UIColor.highlightColor
         buttonConfiguration.title = "Create Pizza"
         
         return UIButton(configuration: buttonConfiguration)
@@ -50,6 +54,7 @@ class FavoritePizzasViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         //tableView.backgroundColor = UIColor(hex: "#FFDAA7")
+        tableView.backgroundColor = UIColor.pizzaCrust
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
         tableView.dataSource = self
@@ -83,7 +88,8 @@ class FavoritePizzasViewController: UIViewController {
     }
 
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        //view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.pizzaCrust
         //view.backgroundColor = UIColor(hex: "#FFDAA7")
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -174,7 +180,12 @@ extension FavoritePizzasViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
         let pizza = viewModel.pizzaFavorite(at: indexPath)
-        cell.textLabel?.text = pizza.name
+        var cellConfigurator = cell.defaultContentConfiguration()
+        cellConfigurator.text = pizza.name
+        cellConfigurator.textProperties.color = UIColor.olives
+        //cell.textLabel?.text = pizza.name
+        cell.contentConfiguration = cellConfigurator
+        cell.backgroundColor = UIColor.pizzaCrust
         
         return cell
     }

@@ -15,17 +15,21 @@ class IngredientsListTableViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
+        tableView.backgroundColor = UIColor.pizzaCrust
         tableView.dataSource = self
         tableView.delegate = self
+        
         return tableView
     }()
     
     private lazy var doneButton: UIButton = {
         var buttonConfiguration = UIButton.Configuration.filled()
         buttonConfiguration.title = "Done"
+        buttonConfiguration.baseBackgroundColor = UIColor.highlightColor
         let button = UIButton(configuration: buttonConfiguration)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        
         return button
     }()
     
@@ -33,11 +37,15 @@ class IngredientsListTableViewController: UIViewController {
         super.viewDidLoad()
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryTextColor]
+        navigationController?.navigationBar.tintColor = UIColor.red
+        
         setupView()
     }
     
     private func setupView() {
-        view.backgroundColor = .systemBackground
+        //view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.pizzaCrust
         view.addSubview(tableView)
         view.addSubview(doneButton)
             
@@ -115,7 +123,6 @@ class IngredientsListTableViewController: UIViewController {
 extension IngredientsListTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -132,11 +139,12 @@ extension IngredientsListTableViewController: UITableViewDataSource, UITableView
         let ingredients = viewModel.ingredients(at: indexPath)
         var cellConfigurator = cell.defaultContentConfiguration()
         cellConfigurator.text = ingredients
+        cellConfigurator.textProperties.color = UIColor.olives
         cell.contentConfiguration = cellConfigurator
         
         // Cambia el color de fondo si el ingrediente está seleccionado
         if selectedIngredients.contains(ingredients) {
-            cell.backgroundColor = UIColor.systemGreen
+            cell.backgroundColor = UIColor.mozzarellaCheese
         } else {
             cell.backgroundColor = UIColor.clear
         }

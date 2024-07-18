@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		430F4A422C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */; };
+		432C9BE82C472F7D0062D241 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C9BE72C472F7D0062D241 /* ColorPalette.swift */; };
 		435268D02C3A858E0090EADE /* animationCooking.json in Resources */ = {isa = PBXBuildFile; fileRef = 435268CF2C3A858E0090EADE /* animationCooking.json */; };
 		435268D32C3A86420090EADE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 435268D22C3A86420090EADE /* Lottie */; };
 		43906B1A2C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43906B192C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsOfPizzasTableViewModel.swift; sourceTree = "<group>"; };
+		432C9BE72C472F7D0062D241 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		435268CF2C3A858E0090EADE /* animationCooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animationCooking.json; path = ../../../Downloads/animationCooking.json; sourceTree = "<group>"; };
 		43906B192C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaLocationViewController.swift; sourceTree = "<group>"; };
 		43906B1B2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaLocationViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				43DE841B2C3B3A24004A78D7 /* animationPizza.json */,
 				435268CF2C3A858E0090EADE /* animationCooking.json */,
 				439388C32C45EA50004D855A /* AuthenticationViewController.swift */,
+				432C9BE72C472F7D0062D241 /* ColorPalette.swift */,
 			);
 			path = PizzasAppOne;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				43D5403C2C300D2F00B51F53 /* IngredientsListTableViewModel.swift in Sources */,
 				43D540242C2FEB6B00B51F53 /* NavigationTabBarController.swift in Sources */,
 				43D540122C2FE9E000B51F53 /* SceneDelegate.swift in Sources */,
+				432C9BE82C472F7D0062D241 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,14 +14,15 @@ class PizzasListTableViewController: UITableViewController {
         super.viewDidLoad()
         title = viewModel.title
         navigationController?.navigationBar.prefersLargeTitles = true
-        // Cambiar el color de fondo de la tableView utilizando un código hexadecimal con alpha
-        //tableView.backgroundColor = UIColor(hex: "#FFDAA7")
-        
+        // Para cambiar el color del titulo del navigation
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryTextColor]
+        // para cambiar el color del texto y la fecha del navigation
+        navigationController?.navigationBar.tintColor = UIColor.red
+        tableView.backgroundColor = UIColor.pizzaCrust // o UIColor.primaryColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -37,9 +38,11 @@ class PizzasListTableViewController: UITableViewController {
         let pizza = viewModel.pizza(at: indexPath)
         var cellConfigurator = cell.defaultContentConfiguration()
         cellConfigurator.text = pizza.name
+        cellConfigurator.textProperties.color = UIColor.olives
         cell.contentConfiguration = cellConfigurator
         // Cambiar el color de fondo de la celda utilizando un código hexadecimal con alpha
         //cell.backgroundColor = UIColor(hex: "#FFF7EB")
+        cell.backgroundColor = UIColor.pizzaCrust
 
         return cell
     }

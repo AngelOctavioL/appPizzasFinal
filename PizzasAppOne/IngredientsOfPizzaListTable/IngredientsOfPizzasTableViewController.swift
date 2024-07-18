@@ -36,6 +36,7 @@ class IngredientsOfPizzasTableViewController: UITableViewController {
         title = viewModel.pizzaName
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: viewModel.cellIdentifier)
+        tableView.backgroundColor = UIColor.pizzaCrust
         
         // Añadir la vista de la animación
         view.addSubview(animationView)
@@ -65,7 +66,9 @@ class IngredientsOfPizzasTableViewController: UITableViewController {
         let ingredients = viewModel.ingredient(at: indexPath)
         var cellConfigurator = cell.defaultContentConfiguration()
         cellConfigurator.text = ingredients
+        cellConfigurator.textProperties.color = UIColor.olives
         cell.contentConfiguration = cellConfigurator
+        cell.backgroundColor = UIColor.pizzaCrust
         
         return cell
     }
