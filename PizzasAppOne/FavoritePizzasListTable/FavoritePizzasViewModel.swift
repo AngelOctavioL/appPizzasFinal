@@ -49,4 +49,8 @@ class FavoritePizzasViewModel {
     func updatePizzaFavoriteList(with pizzas: [Pizza]) {
         self.pizzaFavoriteList = pizzas
     }
+    
+    func removePizzaFavorite(at indexPath: IndexPath) {
+        pizzaFavoriteList.remove(at: indexPath.row)
+    }
 }

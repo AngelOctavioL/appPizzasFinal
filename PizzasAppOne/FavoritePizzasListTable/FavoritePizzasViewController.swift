@@ -99,7 +99,7 @@ class FavoritePizzasViewController: UIViewController {
         contentViewHeightAnchor.priority = .required - 1
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),                                   
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -158,6 +158,19 @@ class FavoritePizzasViewController: UIViewController {
             animationView.isHidden = false
         }
     }
+    
+    private func savePizzasToJSON() {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let fileURL = documentsDirectory.appendingPathComponent("favoritesPizzas.json")
+        
+        do {
+            let favoritePizzaData = try JSONEncoder().encode(viewModel.pizzaFavoriteList)
+            try favoritePizzaData.write(to: fileURL)
+        } catch {
+            assertionFailure("Failed storing favorite pizza")
+        }
+    }
 
     @objc
     func createNewPizza() {
@@ -186,10 +199,40 @@ extension FavoritePizzasViewController: UITableViewDataSource, UITableViewDelega
         //cell.textLabel?.text = pizza.name
         cell.contentConfiguration = cellConfigurator
         cell.backgroundColor = UIColor.pizzaCrust
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
-        
+    
+    // Método para habilitar la eliminación de celdas
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Mostrar alerta de confirmación antes de eliminar
+            let alertController = UIAlertController(title: "Warning", message: "Are you sure to delete this element?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+                guard let self = self else { return }
+                
+                // Eliminar pizza del modelo de datos
+                viewModel.removePizzaFavorite(at: indexPath)
+                
+                // Actualizar archivo JSON
+                savePizzasToJSON()
+                
+                // Eliminar celda de la tabla
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                // Actualizar la UI
+                updateUI()
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(deleteAction)
+                        
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Table view delegate
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

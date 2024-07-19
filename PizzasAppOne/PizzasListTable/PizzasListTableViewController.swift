@@ -43,6 +43,7 @@ class PizzasListTableViewController: UITableViewController {
         // Cambiar el color de fondo de la celda utilizando un código hexadecimal con alpha
         //cell.backgroundColor = UIColor(hex: "#FFF7EB")
         cell.backgroundColor = UIColor.pizzaCrust
+        cell.accessoryType = .disclosureIndicator
 
         return cell
     }

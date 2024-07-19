@@ -48,6 +48,7 @@ class PizzeriasListTableViewController: UITableViewController {
         cell.contentConfiguration = cellConfigurator
         //cell.backgroundColor = UIColor(hex: "#FFF7EB")
         cell.backgroundColor = UIColor.pizzaCrust // o UIColor.softBackgroundColor
+        cell.accessoryType = .disclosureIndicator
 
         return cell
     }
