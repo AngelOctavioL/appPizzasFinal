@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		430F4A422C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */; };
 		432C9BE82C472F7D0062D241 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C9BE72C472F7D0062D241 /* ColorPalette.swift */; };
-		435268D02C3A858E0090EADE /* animationCooking.json in Resources */ = {isa = PBXBuildFile; fileRef = 435268CF2C3A858E0090EADE /* animationCooking.json */; };
 		435268D32C3A86420090EADE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 435268D22C3A86420090EADE /* Lottie */; };
 		43906B1A2C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43906B192C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift */; };
 		43906B1C2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43906B1B2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift */; };
@@ -35,14 +34,14 @@
 		43D5403C2C300D2F00B51F53 /* IngredientsListTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */; };
 		43DAD7DD2C3FC4F400213B98 /* HexadecimalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DAD7DC2C3FC4F400213B98 /* HexadecimalColor.swift */; };
 		43DC88A92C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */; };
-		43DE841C2C3B3A25004A78D7 /* animationPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = 43DE841B2C3B3A24004A78D7 /* animationPizza.json */; };
-		43DE841E2C3B3A3A004A78D7 /* animationDelivery.json in Resources */ = {isa = PBXBuildFile; fileRef = 43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */; };
+		55F996082C556A39002E585D /* animationDelivery.json in Resources */ = {isa = PBXBuildFile; fileRef = 55F996072C556A39002E585D /* animationDelivery.json */; };
+		55F9960A2C556B0F002E585D /* animationPizza.json in Resources */ = {isa = PBXBuildFile; fileRef = 55F996092C556B0F002E585D /* animationPizza.json */; };
+		55F9960C2C556B1D002E585D /* animationCooking.json in Resources */ = {isa = PBXBuildFile; fileRef = 55F9960B2C556B1D002E585D /* animationCooking.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		430F4A412C368F2300E565CA /* IngredientsOfPizzasTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsOfPizzasTableViewModel.swift; sourceTree = "<group>"; };
 		432C9BE72C472F7D0062D241 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
-		435268CF2C3A858E0090EADE /* animationCooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animationCooking.json; path = ../../../Downloads/animationCooking.json; sourceTree = "<group>"; };
 		43906B192C37A83F00D9D5A0 /* PizzeriaLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaLocationViewController.swift; sourceTree = "<group>"; };
 		43906B1B2C37A8B500D9D5A0 /* PizzeriaLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaLocationViewModel.swift; sourceTree = "<group>"; };
 		43906B1E2C37DA1500D9D5A0 /* PizzeriaInMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaInMapViewController.swift; sourceTree = "<group>"; };
@@ -69,8 +68,9 @@
 		43D5403B2C300D2F00B51F53 /* IngredientsListTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewModel.swift; sourceTree = "<group>"; };
 		43DAD7DC2C3FC4F400213B98 /* HexadecimalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexadecimalColor.swift; sourceTree = "<group>"; };
 		43DC88A82C365A8E00C37445 /* IngredientsOfPizzasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsOfPizzasTableViewController.swift; sourceTree = "<group>"; };
-		43DE841B2C3B3A24004A78D7 /* animationPizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animationPizza.json; path = ../../../Downloads/animationPizza.json; sourceTree = "<group>"; };
-		43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animationDelivery.json; path = ../../../Downloads/animationDelivery.json; sourceTree = "<group>"; };
+		55F996072C556A39002E585D /* animationDelivery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animationDelivery.json; sourceTree = "<group>"; };
+		55F996092C556B0F002E585D /* animationPizza.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animationPizza.json; sourceTree = "<group>"; };
+		55F9960B2C556B1D002E585D /* animationCooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animationCooking.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,15 +134,15 @@
 				43D540132C2FE9E000B51F53 /* ViewController.swift */,
 				43D540152C2FE9E000B51F53 /* Main.storyboard */,
 				43D540182C2FE9E100B51F53 /* Assets.xcassets */,
+				55F996072C556A39002E585D /* animationDelivery.json */,
+				55F9960B2C556B1D002E585D /* animationCooking.json */,
+				55F996092C556B0F002E585D /* animationPizza.json */,
 				43D5401A2C2FE9E100B51F53 /* LaunchScreen.storyboard */,
 				43D5401D2C2FE9E100B51F53 /* Info.plist */,
 				43D540232C2FEB6B00B51F53 /* NavigationTabBarController.swift */,
 				43D540342C2FF89A00B51F53 /* pizza-info.json */,
 				43DAD7DC2C3FC4F400213B98 /* HexadecimalColor.swift */,
 				43D540362C2FFD0F00B51F53 /* Pizza.swift */,
-				43DE841D2C3B3A3A004A78D7 /* animationDelivery.json */,
-				43DE841B2C3B3A24004A78D7 /* animationPizza.json */,
-				435268CF2C3A858E0090EADE /* animationCooking.json */,
 				439388C32C45EA50004D855A /* AuthenticationViewController.swift */,
 				432C9BE72C472F7D0062D241 /* ColorPalette.swift */,
 			);
@@ -261,10 +261,10 @@
 				43D540192C2FE9E100B51F53 /* Assets.xcassets in Resources */,
 				43D5401C2C2FE9E100B51F53 /* Base in Resources */,
 				43D540352C2FF89A00B51F53 /* pizza-info.json in Resources */,
-				435268D02C3A858E0090EADE /* animationCooking.json in Resources */,
-				43DE841E2C3B3A3A004A78D7 /* animationDelivery.json in Resources */,
+				55F996082C556A39002E585D /* animationDelivery.json in Resources */,
 				43D540172C2FE9E000B51F53 /* Base in Resources */,
-				43DE841C2C3B3A25004A78D7 /* animationPizza.json in Resources */,
+				55F9960C2C556B1D002E585D /* animationCooking.json in Resources */,
+				55F9960A2C556B0F002E585D /* animationPizza.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +455,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,6 +487,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
